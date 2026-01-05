@@ -458,18 +458,22 @@ def get_video_info(video_id: str, api_key: str) -> dict | None:
 def get_transcript(video_id: str) -> str | None:
     """Récupère la transcription de la vidéo."""
     try:
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-        transcript = None
-        for t in transcript_list:
-            if t.language_code.startswith('fr'):
-                transcript = t.fetch()
-                break
-        if not transcript:
-            transcript = transcript_list.find_transcript(['en', 'fr', 'es', 'de']).fetch()
+        # Nouvelle API youtube-transcript-api v1.0+
+        # Essaie d'abord en français, puis autres langues
+        languages_to_try = ['fr', 'en', 'es', 'de', 'it', 'pt']
+        
+        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=languages_to_try)
+        
         if transcript:
             return " ".join([entry['text'] for entry in transcript])
     except Exception as e:
-        st.warning(f"⚠️ Transcription non disponible: {e}")
+        # Si échec avec langues spécifiques, essaie sans préférence
+        try:
+            transcript = YouTubeTranscriptApi.get_transcript(video_id)
+            if transcript:
+                return " ".join([entry['text'] for entry in transcript])
+        except Exception as e2:
+            st.warning(f"⚠️ Transcription non disponible: {e2}")
     return None
 
 
