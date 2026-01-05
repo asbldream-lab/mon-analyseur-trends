@@ -21,36 +21,41 @@ st.set_page_config(
 )
 
 # ============================================================================
-# CSS PERSONNALISÉ - DESIGN MODERNE
+# CSS PERSONNALISÉ - DESIGN CLAIR ET LISIBLE
 # ============================================================================
 
 st.markdown("""
 <style>
     /* Import Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
     
-    /* Variables CSS */
+    /* Variables CSS - THÈME CLAIR */
     :root {
-        --bg-dark: #0a0a0f;
-        --bg-card: #12121a;
-        --bg-card-hover: #1a1a25;
-        --accent-green: #00d67d;
-        --accent-green-dim: rgba(0, 214, 125, 0.15);
-        --accent-yellow: #ffc107;
-        --accent-yellow-dim: rgba(255, 193, 7, 0.15);
-        --accent-blue: #00a8ff;
-        --accent-blue-dim: rgba(0, 168, 255, 0.15);
-        --accent-purple: #a855f7;
-        --accent-purple-dim: rgba(168, 85, 247, 0.15);
-        --text-primary: #ffffff;
-        --text-secondary: #8b8b9e;
-        --border-color: #2a2a3a;
+        --bg-main: #f8fafc;
+        --bg-card: #ffffff;
+        --bg-card-hover: #f1f5f9;
+        --accent-green: #10b981;
+        --accent-green-light: #d1fae5;
+        --accent-green-dark: #047857;
+        --accent-yellow: #f59e0b;
+        --accent-yellow-light: #fef3c7;
+        --accent-yellow-dark: #b45309;
+        --accent-blue: #3b82f6;
+        --accent-blue-light: #dbeafe;
+        --accent-blue-dark: #1d4ed8;
+        --accent-purple: #8b5cf6;
+        --accent-purple-light: #ede9fe;
+        --accent-purple-dark: #6d28d9;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --border-color: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
     
     /* Global Styles */
     .stApp {
-        background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0d0d14 100%);
-        font-family: 'Space Grotesk', sans-serif;
+        background: var(--bg-main);
+        font-family: 'Inter', sans-serif;
     }
     
     /* Hide Streamlit branding */
@@ -62,79 +67,79 @@ st.markdown("""
     .main-header {
         text-align: center;
         padding: 2rem 0 3rem 0;
-        background: linear-gradient(180deg, rgba(0, 214, 125, 0.1) 0%, transparent 100%);
+        background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #8b5cf6 100%);
         border-radius: 0 0 30px 30px;
         margin-bottom: 2rem;
+        box-shadow: var(--shadow);
     }
     
     .main-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
         font-weight: 700;
-        background: linear-gradient(135deg, #00d67d 0%, #00a8ff 50%, #a855f7 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #ffffff;
         margin-bottom: 0.5rem;
         letter-spacing: -1px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .main-subtitle {
-        color: var(--text-secondary);
+        color: rgba(255,255,255,0.9);
         font-size: 1.2rem;
         font-weight: 400;
     }
     
     /* Sidebar Styling */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);
+        background: #ffffff;
         border-right: 1px solid var(--border-color);
     }
     
     section[data-testid="stSidebar"] .stTextInput > div > div {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
+        background: var(--bg-main);
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        color: var(--text-primary);
     }
     
     section[data-testid="stSidebar"] .stTextInput > div > div:focus-within {
         border-color: var(--accent-green);
-        box-shadow: 0 0 0 3px var(--accent-green-dim);
+        box-shadow: 0 0 0 3px var(--accent-green-light);
     }
     
     /* Card Styles */
     .result-card {
         background: var(--bg-card);
         border: 1px solid var(--border-color);
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
         transition: all 0.3s ease;
     }
     
     .result-card:hover {
-        border-color: var(--accent-green);
-        box-shadow: 0 8px 32px rgba(0, 214, 125, 0.1);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         transform: translateY(-2px);
     }
     
     .card-green {
-        border-left: 4px solid var(--accent-green);
-        background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 214, 125, 0.05) 100%);
+        border-left: 5px solid var(--accent-green);
+        background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
     }
     
     .card-yellow {
-        border-left: 4px solid var(--accent-yellow);
-        background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 193, 7, 0.05) 100%);
+        border-left: 5px solid var(--accent-yellow);
+        background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
     }
     
     .card-blue {
-        border-left: 4px solid var(--accent-blue);
-        background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 168, 255, 0.05) 100%);
+        border-left: 5px solid var(--accent-blue);
+        background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
     }
     
     .card-purple {
-        border-left: 4px solid var(--accent-purple);
-        background: linear-gradient(135deg, var(--bg-card) 0%, rgba(168, 85, 247, 0.05) 100%);
+        border-left: 5px solid var(--accent-purple);
+        background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
     }
     
     /* Card Headers */
@@ -144,7 +149,7 @@ st.markdown("""
         gap: 12px;
         margin-bottom: 1rem;
         padding-bottom: 1rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--border-color);
     }
     
     .card-icon {
@@ -153,7 +158,7 @@ st.markdown("""
     
     .card-title {
         font-size: 1.3rem;
-        font-weight: 600;
+        font-weight: 700;
         color: var(--text-primary);
         margin: 0;
     }
@@ -169,143 +174,145 @@ st.markdown("""
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        padding: 4px 12px;
+        padding: 6px 14px;
         border-radius: 20px;
         font-size: 0.75rem;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
     
     .badge-green {
-        background: var(--accent-green-dim);
-        color: var(--accent-green);
+        background: var(--accent-green-light);
+        color: var(--accent-green-dark);
     }
     
     .badge-yellow {
-        background: var(--accent-yellow-dim);
-        color: var(--accent-yellow);
+        background: var(--accent-yellow-light);
+        color: var(--accent-yellow-dark);
     }
     
     .badge-blue {
-        background: var(--accent-blue-dim);
-        color: var(--accent-blue);
+        background: var(--accent-blue-light);
+        color: var(--accent-blue-dark);
     }
     
     .badge-purple {
-        background: var(--accent-purple-dim);
-        color: var(--accent-purple);
+        background: var(--accent-purple-light);
+        color: var(--accent-purple-dark);
     }
     
     /* Point List Styles */
     .point-item {
         display: flex;
-        gap: 12px;
-        padding: 12px 16px;
-        background: rgba(255, 255, 255, 0.02);
+        gap: 14px;
+        padding: 14px 18px;
+        background: #f8fafc;
         border-radius: 12px;
-        margin-bottom: 10px;
-        border: 1px solid transparent;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
         transition: all 0.2s ease;
     }
     
     .point-item:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: var(--border-color);
+        background: #f1f5f9;
+        border-color: var(--accent-green);
     }
     
     .point-number {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         background: var(--accent-green);
-        color: #000;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.85rem;
+        color: #ffffff;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.9rem;
         flex-shrink: 0;
     }
     
     .point-text {
         color: var(--text-primary);
-        line-height: 1.6;
+        line-height: 1.7;
         font-size: 0.95rem;
     }
     
     /* Comment Analysis Styles */
     .comment-insight {
-        padding: 12px 16px;
-        background: rgba(255, 193, 7, 0.05);
-        border-left: 3px solid var(--accent-yellow);
+        padding: 14px 18px;
+        background: var(--accent-yellow-light);
+        border-left: 4px solid var(--accent-yellow);
         border-radius: 0 12px 12px 0;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         color: var(--text-primary);
         font-size: 0.95rem;
-        line-height: 1.6;
+        line-height: 1.7;
     }
     
     /* Trend Styles */
     .trend-item {
-        padding: 16px;
-        background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(0, 168, 255, 0.05) 100%);
-        border: 1px solid rgba(168, 85, 247, 0.3);
+        padding: 18px;
+        background: var(--accent-purple-light);
+        border: 2px solid var(--accent-purple);
         border-radius: 12px;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
     
     .trend-title {
-        color: var(--accent-purple);
-        font-weight: 600;
-        margin-bottom: 8px;
-        font-size: 1rem;
+        color: var(--accent-purple-dark);
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 1.05rem;
     }
     
     .trend-description {
         color: var(--text-primary);
-        font-size: 0.9rem;
-        line-height: 1.6;
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
     
     /* Video Title Styles */
     .video-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--accent-blue);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--accent-blue-dark);
         margin-bottom: 0.5rem;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
     }
     
     .video-title::before {
         content: "▶";
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        color: var(--accent-blue);
     }
     
     /* Button Styles */
     .stButton > button {
-        background: linear-gradient(135deg, var(--accent-green) 0%, #00b368 100%);
-        color: #000;
+        background: linear-gradient(135deg, var(--accent-green) 0%, #059669 100%);
+        color: #ffffff;
         font-weight: 600;
         border: none;
         border-radius: 12px;
-        padding: 0.75rem 2rem;
-        font-size: 1rem;
+        padding: 0.85rem 2rem;
+        font-size: 1.05rem;
         transition: all 0.3s ease;
         width: 100%;
+        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
     }
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 214, 125, 0.3);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
     }
     
     /* TextArea Styles */
     .stTextArea > div > div > textarea {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
+        background: #ffffff;
+        border: 2px solid var(--border-color);
         border-radius: 12px;
         color: var(--text-primary);
         font-family: 'JetBrains Mono', monospace;
@@ -313,27 +320,14 @@ st.markdown("""
     }
     
     .stTextArea > div > div > textarea:focus {
-        border-color: var(--accent-green);
-        box-shadow: 0 0 0 3px var(--accent-green-dim);
-    }
-    
-    /* Spinner */
-    .stSpinner > div {
-        border-color: var(--accent-green) transparent transparent transparent;
-    }
-    
-    /* Expander */
-    .streamlit-expanderHeader {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        color: var(--text-primary);
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 3px var(--accent-blue-light);
     }
     
     /* Divider */
     hr {
         border: none;
-        height: 1px;
+        height: 2px;
         background: linear-gradient(90deg, transparent, var(--border-color), transparent);
         margin: 2rem 0;
     }
@@ -347,15 +341,16 @@ st.markdown("""
     }
     
     .stat-item {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        padding: 1rem;
+        background: #ffffff;
+        border: 2px solid var(--border-color);
+        border-radius: 14px;
+        padding: 1.2rem;
         text-align: center;
+        box-shadow: var(--shadow);
     }
     
     .stat-value {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: 700;
         color: var(--accent-green);
     }
@@ -365,12 +360,13 @@ st.markdown("""
         color: var(--text-secondary);
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        font-weight: 600;
     }
     
     /* Info Box */
     .info-box {
-        background: var(--accent-blue-dim);
-        border: 1px solid rgba(0, 168, 255, 0.3);
+        background: var(--accent-blue-light);
+        border: 2px solid var(--accent-blue);
         border-radius: 12px;
         padding: 1rem;
         color: var(--text-primary);
@@ -379,13 +375,18 @@ st.markdown("""
     }
     
     .info-box strong {
-        color: var(--accent-blue);
+        color: var(--accent-blue-dark);
+    }
+    
+    .info-box a {
+        color: var(--accent-blue-dark);
+        font-weight: 600;
     }
     
     /* Warning Box */
     .warning-box {
-        background: var(--accent-yellow-dim);
-        border: 1px solid rgba(255, 193, 7, 0.3);
+        background: var(--accent-yellow-light);
+        border: 2px solid var(--accent-yellow);
         border-radius: 12px;
         padding: 1rem;
         color: var(--text-primary);
@@ -394,12 +395,13 @@ st.markdown("""
     
     /* Success Box */
     .success-box {
-        background: var(--accent-green-dim);
-        border: 1px solid rgba(0, 214, 125, 0.3);
+        background: var(--accent-green-light);
+        border: 2px solid var(--accent-green);
         border-radius: 12px;
         padding: 1rem;
         color: var(--text-primary);
         font-size: 0.9rem;
+        font-weight: 500;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -459,21 +461,21 @@ def get_transcript(video_id: str) -> str | None:
     """Récupère la transcription de la vidéo."""
     try:
         # Nouvelle API youtube-transcript-api v1.0+
+        ytt_api = YouTubeTranscriptApi()
+        
         # Essaie d'abord en français, puis autres langues
         languages_to_try = ['fr', 'en', 'es', 'de', 'it', 'pt']
         
-        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=languages_to_try)
+        try:
+            transcript = ytt_api.fetch(video_id, languages=languages_to_try)
+        except Exception:
+            # Si échec avec langues spécifiques, essaie sans préférence
+            transcript = ytt_api.fetch(video_id)
         
         if transcript:
-            return " ".join([entry['text'] for entry in transcript])
+            return " ".join([entry.text for entry in transcript])
     except Exception as e:
-        # Si échec avec langues spécifiques, essaie sans préférence
-        try:
-            transcript = YouTubeTranscriptApi.get_transcript(video_id)
-            if transcript:
-                return " ".join([entry['text'] for entry in transcript])
-        except Exception as e2:
-            st.warning(f"⚠️ Transcription non disponible: {e2}")
+        st.warning(f"⚠️ Transcription non disponible: {e}")
     return None
 
 
@@ -612,31 +614,45 @@ def analyze_trends(all_comments: dict[str, list[str]], groq_client: Groq) -> str
     
     combined_text = ""
     for video_title, comments in all_comments.items():
-        sample_comments = comments[:20]
+        sample_comments = comments[:25]
         combined_text += f"\n\n=== Commentaires de '{video_title}' ===\n"
-        combined_text += "\n".join([f"- {c[:150]}" for c in sample_comments])
+        combined_text += "\n".join([f"- {c[:200]}" for c in sample_comments])
     
-    truncated = truncate_text(combined_text, max_tokens=4000)
+    truncated = truncate_text(combined_text, max_tokens=4500)
     
     prompt = f"""Tu es un expert en analyse de tendances sociales. Analyse les commentaires de PLUSIEURS vidéos YouTube et identifie les POINTS COMMUNS - ce que les différentes communautés expriment de similaire.
 
 COMMENTAIRES DE PLUSIEURS VIDÉOS:
 {truncated}
 
-ANALYSE DEMANDÉE:
-1. **Tendances communes**: Quels thèmes, opinions ou préoccupations reviennent dans TOUTES ou la plupart des vidéos?
-2. **Sentiments partagés**: Y a-t-il des émotions ou réactions similaires?
-3. **Questions récurrentes**: Des interrogations que l'on retrouve partout?
-4. **Points de désaccord**: Des sujets où les communautés divergent?
-5. **Insight global**: Quelle conclusion peut-on tirer sur ce que les audiences veulent/pensent?
+ANALYSE DEMANDÉE (IMPORTANT - inclus des citations exactes de commentaires pour illustrer):
 
-IMPORTANT: Concentre-toi UNIQUEMENT sur ce qui est COMMUN entre les différentes vidéos, pas sur les spécificités de chacune."""
+1. **Tendances communes**: Quels thèmes, opinions ou préoccupations reviennent dans TOUTES ou la plupart des vidéos?
+   → Cite 2-3 commentaires textuellement entre guillemets pour illustrer
+
+2. **Sentiments partagés**: Y a-t-il des émotions ou réactions similaires?
+   → Cite 1-2 commentaires représentatifs entre guillemets
+
+3. **Questions récurrentes**: Des interrogations que l'on retrouve partout?
+   → Cite les questions exactes posées par les commentateurs
+
+4. **Points de désaccord**: Des sujets où les communautés divergent?
+   → Cite des exemples de commentaires opposés
+
+5. **Verbatims marquants**: Cite 3-5 commentaires particulièrement représentatifs ou percutants qui résument bien l'opinion générale (entre guillemets, avec le contexte)
+
+6. **Insight global**: Quelle conclusion peut-on tirer sur ce que les audiences veulent/pensent?
+
+IMPORTANT: 
+- Concentre-toi UNIQUEMENT sur ce qui est COMMUN entre les différentes vidéos
+- CITE TEXTUELLEMENT des commentaires entre guillemets "..." pour appuyer chaque point
+- Indique de quelle vidéo vient chaque citation si pertinent"""
 
     try:
         response = groq_client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=1500,
+            max_tokens=2000,
             temperature=0.7
         )
         return response.choices[0].message.content
